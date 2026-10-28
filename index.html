@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VisionTrack AI — Object Detection & Tracking</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-icon">◈</span><span>VISION<span class="accent">TRACK</span><small>INTELLIGENT VIDEO ANALYTICS</small></span></div>
+      <div class="side-label">WORKSPACE</div>
+      <a href="#dashboard" class="nav active">▦ <span>Dashboard</span></a>
+      <a href="#workspace" class="nav">◉ <span>Live detection</span></a>
+      <a href="#history" class="nav">◷ <span>Session history</span></a>
+      <div class="sidebar-bottom"><div class="pulse"></div><div><strong>Local AI Engine</strong><small>No cloud API required</small></div></div>
+    </aside>
+    <main class="main" id="dashboard">
+      <header class="topbar"><div><div class="eyebrow">COMPUTER VISION STUDIO / OVERVIEW</div><h1>Object Detection <span>& Tracking</span></h1><p>Turn your camera or videos into real-time intelligence.</p></div><div class="badge"><i></i> AI ENGINE READY</div></header>
+      <section class="metrics" aria-label="Live statistics">
+        <article class="metric"><div class="metric-icon violet">◈</div><div class="metric-label">VISIBLE OBJECTS</div><div class="metric-number" id="objects">0</div><div class="metric-note">Current video frame</div></article>
+        <article class="metric"><div class="metric-icon green">◎</div><div class="metric-label">UNIQUE TRACK IDs</div><div class="metric-number" id="unique">0</div><div class="metric-note">Current camera session</div></article>
+        <article class="metric"><div class="metric-icon blue">⌁</div><div class="metric-label">FRAME RATE</div><div class="metric-number"><span id="fps">0</span><small>FPS</small></div><div class="metric-note">Measured processing speed</div></article>
+        <article class="metric"><div class="metric-icon orange">▣</div><div class="metric-label">ACTIVE CATEGORIES</div><div class="metric-number" id="categories">0</div><div class="metric-note">Classes in current frame</div></article>
+      </section>
+      <section class="work-grid" id="workspace">
+        <div class="panel video-panel">
+          <div class="panel-head"><div><h2>Detection workspace</h2><p>Live feed or recorded video analysis</p></div><span class="live-pill" id="mode-pill">● STANDBY</span></div>
+          <div class="tabs"><button class="tab active" id="camera-tab" type="button">◉ Live camera</button><button class="tab" id="upload-tab" type="button">▣ Upload video</button></div>
+          <div class="viewer" id="viewer"><div class="empty-view" id="empty-view"><div class="view-icon">◈</div><h3>Your AI vision starts here</h3><p>Start your camera to detect and track objects with persistent IDs.</p><div class="view-decor">YOLO · BYTETRACK · OPENCV</div></div><img id="camera-feed" alt="Live AI annotated camera feed" hidden /></div>
+          <div class="controls" id="camera-controls"><button class="primary" id="start-btn">▶ Start camera</button><button class="secondary" id="stop-btn" disabled>■ Stop camera</button><span class="hint">Camera stays on this device</span></div>
+          <div class="controls upload-controls" id="upload-controls" hidden><label class="file-btn">＋ Choose video<input type="file" id="video-file" accept="video/*,.mkv" hidden /></label><span class="file-name" id="file-name">No file selected</span><button class="primary" id="process-btn">▶ Analyze video</button></div>
+          <div class="status" id="status" role="status" aria-live="polite">Ready. Select a source to begin.</div>
+          <div class="result" id="result" hidden><div><strong>Analysis complete</strong><p id="result-summary"></p></div><a id="download-link" class="download" href="#">↓ Download result</a></div>
+        </div>
+        <div class="panel insights"><div class="panel-head"><div><h2>Live insights</h2><p>Current-frame detections</p></div><span class="dot-ring">◉</span></div><div class="insight-banner"><div class="small-label">DETECTION STATUS</div><strong id="detection-status">Waiting for input</strong><p id="detection-caption">Start a stream to see object insights.</p></div><div class="section-title">DETECTED CATEGORIES <span id="class-count">0 TYPES</span></div><div id="class-list" class="class-list"><div class="no-objects">No objects detected yet.</div></div><div class="info-note">ⓘ Tracking IDs are estimates and can change after occlusion.</div></div>
+      </section>
+      <section class="panel history" id="history"><div class="panel-head"><div><h2>Recent sessions</h2><p>Saved locally in SQLite</p></div><button class="secondary refresh" id="refresh-btn">↻ Refresh</button></div><div class="table-scroll"><table><thead><tr><th>SESSION</th><th>DATE (UTC)</th><th>SOURCE</th><th>FRAMES</th><th>TRACK IDs</th><th>RESULT</th></tr></thead><tbody id="history-body"><tr><td colspan="6" class="no-history">No sessions yet. Run your first analysis!</td></tr></tbody></table></div></section>
+      <footer>VISIONTRACK AI <span>•</span> Built with Python, Flask, YOLO & ByteTrack</footer>
+    </main>
+  </div>
+  <script src="/static/js/script.js"></script>
+</body>
+</html>
